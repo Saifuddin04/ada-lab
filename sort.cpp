@@ -11,7 +11,6 @@ class Sort {
 protected:
     vector<int> numList;
 	int n;
-
 public:
 	Sort() {
 		cout << "\nEnter number of elements to sort : "; cin >> n;
@@ -257,11 +256,11 @@ int main() {
                     break;
             case 5: sortObj->plotGraph(fout);
                     break;
-			      case 6: sortObj->plotGraph(fout);
+	    case 6: sortObj->plotGraph(fout);
                     break;
-			      case 7: sortObj->plotGraph(fout);
+	    case 7: sortObj->plotGraph(fout);
                     break;
-			      case 8: sortObj->plotGraph(fout);
+	    case 8: sortObj->plotGraph(fout);
                     break;
             case 9: fout.close();
                   delete sortObj;
