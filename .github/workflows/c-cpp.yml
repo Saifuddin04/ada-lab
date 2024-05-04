@@ -1,23 +1,36 @@
-name: C/C++ CI
+name: C++ Build and Test
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
   build:
-
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: configure
-      run: ./configure
-    - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up C++ build environment
+      uses: actions/setup-cpp@v2
+      with:
+        compiler: 'gcc' # or 'clang', based on your preference
+
+    - name: Build
+      run: |
+        mkdir build
+        cd build
+        cmake ..
+        make
+
+    - name: Test
+      run: |
+        cd build
+        ctest --verbose
+    run: make distcheck
